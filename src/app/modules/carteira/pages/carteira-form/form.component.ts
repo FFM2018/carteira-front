@@ -32,31 +32,12 @@ export class CarteiraFormComponent implements OnInit {
       acaoId: [null],
       quantidade: [null]
     });
-
-    this.acaoService
-      .list()
-      .pipe(
-        catchError((error) => {
-          this.onError('Erro ao carregar a carteira');
-          return of([]);
-        })
-      )
-      .subscribe((acoes) => {
-        this.acoes = acoes;
-      });
   }
 
   onCancel() {
     this.router.navigate([''], {relativeTo: this.route})
   }
 
-  /* onSubmit() {
-    this.carteiraService.save(this.form.value)
-      .subscribe(result => {
-      }, error => {
-        this.onError(error);
-    });
-  } */
   onError(errorMsg: any) {
     this.snackBar.open(errorMsg.error.userMessage, '', { duration: 3000 });
   }
@@ -65,12 +46,20 @@ export class CarteiraFormComponent implements OnInit {
     this.carteiraService.save(this.form.value).pipe(
       catchError(error => {
         this.onError(error);
-        //this.snackBar.open(error.message, '', { duration: 5000 });
-        return of(); // retorna um observable vazio
+        return of();
       })
     ).subscribe();
   }
 
-
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.acaoService.getListCarteira().pipe(
+      tap(acoes => {
+          this.acoes = acoes;
+      }),
+      catchError(error => {
+        this.onError(error);
+        return of();
+      })
+    ).subscribe();
+  }
 }

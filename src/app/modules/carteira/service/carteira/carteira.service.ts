@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { delay, first, tap } from 'rxjs';
+import { Observable, delay, first, tap } from 'rxjs';
 import { Carteira } from '../../model/carteira';
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,10 @@ export class CarteiraService {
       //delay(5000),
       tap(carteira => console.log(carteira))
     );
+  }
+
+  getListCarteira(): Observable<Carteira[]>{
+    return this.httpClient.get<Carteira[]>(this.API);
   }
 
   save(record: Carteira){

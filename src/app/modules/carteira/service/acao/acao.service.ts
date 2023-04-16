@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Acao } from '../../model/acao';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,8 @@ export class AcaoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  list(){
-    return this.httpClient.get<Acao[]>(this.API)
-    .pipe(
-      tap(acao => console.log(acao))
-    );
+  getListCarteira(): Observable<Acao[]>{
+    return this.httpClient.get<Acao[]>(this.API);
   }
+
 }
