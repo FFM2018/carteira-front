@@ -38,14 +38,17 @@ export class CarteiraFormComponent implements OnInit {
     this.router.navigate([''], {relativeTo: this.route})
   }
 
-  onError(errorMsg: any) {
-    this.snackBar.open(errorMsg.error.userMessage, '', { duration: 3000 });
+  onUsuarioMessage(message: any) {
+    this.snackBar.open(message, '', { duration: 3000 });
   }
 
   onSubmit() {
     this.carteiraService.save(this.form.value).pipe(
+      tap(acoes => {
+        this.onUsuarioMessage("Ação adicionada na carteira com sucesso!");
+      }),
       catchError(error => {
-        this.onError(error);
+        this.onUsuarioMessage(error.error.userMessage);
         return of();
       })
     ).subscribe();
@@ -57,7 +60,7 @@ export class CarteiraFormComponent implements OnInit {
           this.acoes = acoes;
       }),
       catchError(error => {
-        this.onError(error);
+        this.onUsuarioMessage(error);
         return of();
       })
     ).subscribe();
