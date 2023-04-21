@@ -1,0 +1,20 @@
+<mat-card>
+
+  <mat-toolbar color="primary">Ações</mat-toolbar>
+  <div class="mat-elevation-z8">
+    <app-carteira-list-table *ngIf="carteira$ | async as carteira; else loading"
+    [carteira]="carteira"
+    (add)="onAdd()">
+
+    </app-carteira-list-table>
+
+
+
+
+    <ng-template #loading>
+      <div class="loading-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
+  </div>
+</mat-card>

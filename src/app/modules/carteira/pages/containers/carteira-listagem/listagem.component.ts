@@ -1,6 +1,6 @@
-import { CarteiraService } from '../../service/carteira/carteira.service';
+import { CarteiraService } from '../../../service/carteira/carteira.service';
 import { Component, OnInit } from '@angular/core';
-import { Carteira } from '../../model/carteira';
+import { Carteira } from '../../../model/carteira';
 import { Observable, catchError, of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';

@@ -1,12 +1,12 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, catchError, of, tap, throwError  } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Acao } from '../../model/acao';
-import { AcaoService } from '../../service/acao/acao.service';
+import { NonNullableFormBuilder, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Acao } from '../../../model/acao';
+import { AcaoService } from '../../../service/acao/acao.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
-import { CarteiraService } from '../../service/carteira/carteira.service';
+import { CarteiraService } from '../../../service/carteira/carteira.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -18,10 +18,10 @@ export class CarteiraFormComponent implements OnInit {
   selectedValue: string = '';
   //acoes$: Observable<Acao[]>;
   acoes: Acao[] = [];
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: NonNullableFormBuilder,
     private acaoService: AcaoService,
     private carteiraService: CarteiraService,
     private router: Router,
@@ -29,8 +29,8 @@ export class CarteiraFormComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     this.form = this.formBuilder.group({
-      acaoId: [null],
-      quantidade: [null]
+      acaoId: [0],
+      quantidade: [0]
     });
   }
 

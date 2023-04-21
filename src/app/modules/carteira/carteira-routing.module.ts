@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CarteiraComponent } from './pages/carteira-listagem/listagem.component';
-import { CarteiraFormComponent } from './pages/carteira-form/form.component';
+import { CarteiraComponent } from './pages/containers/carteira-listagem/listagem.component';
+import { CarteiraFormComponent } from './pages/containers/carteira-form/form.component';
 
 const routes: Routes = [
   { path: '', component: CarteiraComponent},
