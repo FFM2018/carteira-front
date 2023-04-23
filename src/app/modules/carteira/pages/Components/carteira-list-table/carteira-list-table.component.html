@@ -23,7 +23,7 @@
 
     <mat-cell *matCellDef="let carteira" class="action-column">
       <button mat-icon-button color="primary" aria-label="Editar Ação">
-        <mat-icon (click)="onEdit()">edit</mat-icon>
+        <mat-icon (click)="onEdit(carteira)">edit</mat-icon>
       </button>
 
       <button mat-icon-button color="warn" aria-label="Delete Ação">

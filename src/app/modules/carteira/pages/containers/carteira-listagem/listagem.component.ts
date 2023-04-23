@@ -45,6 +45,10 @@ export class CarteiraComponent implements OnInit {
   }
 
   onAdd(){
-    this.router.navigate(['new'], {relativeTo: this.route})
+    this.router.navigate(['new'], {relativeTo: this.route});
+  }
+
+  onEdit(carteira: Carteira){
+    this.router.navigate(['edit', carteira.id], {relativeTo: this.route});
   }
 }

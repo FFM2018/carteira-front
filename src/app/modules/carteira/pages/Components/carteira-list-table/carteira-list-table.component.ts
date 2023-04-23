@@ -12,6 +12,7 @@ export class CarteiraListTableComponent implements OnInit {
   displayedColumns = ['nome', 'quantidade', 'actions'];
   @Input() carteira: Carteira[] = [];
   @Output() add = new EventEmitter(false);
+  @Output() edit = new EventEmitter(false);
 
   constructor(
     private router: Router,
@@ -24,5 +25,9 @@ export class CarteiraListTableComponent implements OnInit {
   onAdd(){
     //this.router.navigate(['new'], {relativeTo: this.route})
     this.add.emit(true);
+  }
+
+  onEdit(carteira: Carteira){
+    this.edit.emit(carteira);
   }
 }

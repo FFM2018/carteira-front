@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, delay, first, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Carteira } from '../../model/carteira';
 @Injectable({
   providedIn: 'root'
@@ -13,11 +13,12 @@ export class CarteiraService {
   constructor(private httpClient: HttpClient) { }
 
   list(){
-    return this.httpClient.get<Carteira[]>(this.API)
-    .pipe(
+    return this.httpClient.get<Carteira[]>(this.API);
+    //.pipe(
       //delay(5000),
-      tap(carteira => console.log(carteira))
-    );
+      //tap(carteira => console.log(carteira))
+    //);
+
   }
 
   getListCarteira(): Observable<Carteira[]>{
@@ -26,5 +27,9 @@ export class CarteiraService {
 
   save(record: Carteira){
     return this.httpClient.post<Carteira>(this.API, record);
+  }
+
+  findCarteiraById(id: String){
+    return this.httpClient.get<Carteira>(`${this.API}/${id}`);
   }
 }

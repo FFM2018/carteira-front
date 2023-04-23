@@ -4,7 +4,8 @@
   <div class="mat-elevation-z8">
     <app-carteira-list-table *ngIf="carteira$ | async as carteira; else loading"
     [carteira]="carteira"
-    (add)="onAdd()">
+    (add)="onAdd()"
+    (edit)="onEdit($event)">
 
     </app-carteira-list-table>
 
