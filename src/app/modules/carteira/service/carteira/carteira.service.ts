@@ -26,7 +26,18 @@ export class CarteiraService {
   }
 
   save(record: Carteira){
-    return this.httpClient.post<Carteira>(this.API, record);
+    if(record.id){
+      return this.update(record);
+    }
+    return this.create(record);
+  }
+
+  private create(record: Carteira){
+    return this.httpClient.post<Carteira>(`${this.API}`, record);
+  }
+
+  private update(record: Carteira){
+    return this.httpClient.put<Carteira>(`${this.API}/${record.id}`, record);
   }
 
   findCarteiraById(id: String){

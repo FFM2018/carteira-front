@@ -33,8 +33,9 @@ export class CarteiraFormComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     this.form = this.formBuilder.group({
-      acaoId: [0],
-      quantidade: [0]
+      id: '',
+      acaoId: '',
+      quantidade: ''
     });
   }
 
@@ -54,6 +55,7 @@ export class CarteiraFormComponent implements OnInit {
     if(carteira.id != ''){
       console.log(carteira);
       this.form.setValue({
+        id: carteira.id,
         acaoId: carteira.acao.id,
         quantidade: carteira.quantidade
       });
