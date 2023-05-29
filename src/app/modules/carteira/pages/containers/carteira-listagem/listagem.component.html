@@ -5,7 +5,8 @@
     <app-carteira-list-table *ngIf="carteira$ | async as carteira; else loading"
     [carteira]="carteira"
     (add)="onAdd()"
-    (edit)="onEdit($event)">
+    (edit)="onEdit($event)"
+    (delete)="onDelete($event)">
 
     </app-carteira-list-table>
 

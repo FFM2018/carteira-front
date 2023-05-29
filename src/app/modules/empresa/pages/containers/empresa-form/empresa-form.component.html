@@ -1,0 +1,42 @@
+<mat-card>
+    <form [formGroup]="form">         
+
+          <div class="carteira-form-container">
+            <mat-form-field  appearance="fill">
+                <mat-label>Nome da Empresa</mat-label>
+                <input matInput #input maxlength="10" placeholder="Ex. Banco do Brasil" formControlName="nome">
+              </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Selecione</mat-label>
+              <mat-select formControlName="setor">
+                
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Selecione</mat-label>
+                <mat-select formControlName="subsetor">
+                  
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Selecione</mat-label>
+                <mat-select formControlName="segmento">
+                  
+                </mat-select>
+              </mat-form-field>
+  
+      
+            <mat-form-field  appearance="fill">
+              <mat-label>CNPJ</mat-label>
+              <input matInput #input maxlength="17" placeholder="Ex. 00000000000000" formControlName="cnpj">
+            </mat-form-field>
+      
+          </div>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
+            <button mat-raised-button (click)="onCancel()">Cancelar</button>
+          </mat-card-actions>
+        </form>
+        </mat-card>

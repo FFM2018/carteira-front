@@ -10,9 +10,10 @@ import { AppMaterialModule } from './app-material/app-material.module';
     ErrorDialogComponent
   ],
   imports: [
-    CommonModule,
-    AppMaterialModule
+    CommonModule    
   ],
-  exports: [ErrorDialogComponent]
+  exports: [
+    ErrorDialogComponent,
+    AppMaterialModule]
 })
 export class SharedModule { }

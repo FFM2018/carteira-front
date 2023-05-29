@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CarteiraFormComponent } from './form.component';
+import { CarteiraFormComponent } from './carteira-form.component';
 
 describe('CarteiraFormComponent', () => {
   let component: CarteiraFormComponent;
@@ -11,9 +11,7 @@ describe('CarteiraFormComponent', () => {
       declarations: [ CarteiraFormComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(CarteiraFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

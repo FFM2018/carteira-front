@@ -1,5 +1,7 @@
+import { Acao } from "./acao";
+
 export interface Carteira {
-  id: string,
-  nome: string;
-  quantidade: string;
+  id: number,
+  acao: Acao,
+  quantidade: number;
 }

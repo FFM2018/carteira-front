@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: 'carteira',
     loadChildren: () => import('./modules/carteira/carteira.module').then(m => m.CarteiraModule)
+  },
+  {
+    path: 'empresa',
+    loadChildren: () => import('./modules/empresa/empresa.module').then(m => m.EmpresaModule)
   }
 ];
 

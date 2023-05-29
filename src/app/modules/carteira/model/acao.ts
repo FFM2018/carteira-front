@@ -1,4 +1,4 @@
 export interface Acao {
   id: number;
-  nome: number;
+  nome: string;
 }

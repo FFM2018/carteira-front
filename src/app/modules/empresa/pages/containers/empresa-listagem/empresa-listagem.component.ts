@@ -1,46 +1,34 @@
-import { CarteiraService } from '../../../service/carteira/carteira.service';
 import { Component, OnInit } from '@angular/core';
-import { Carteira } from '../../../model/carteira';
+import { EmpresaService } from '../../../service/empresa.service';
+import { Empresa } from '../../../model/empresa';
 import { Observable, catchError, of, tap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-
 @Component({
-  selector: 'app-carteira',
-  templateUrl: './listagem.component.html',
-  styleUrls: ['./listagem.component.scss']
+  selector: 'app-empresa-listagem',
+  templateUrl: './empresa-listagem.component.html',
+  styleUrls: ['./empresa-listagem.component.scss']
 })
-export class CarteiraComponent implements OnInit {
+export class EmpresaListagemComponent implements OnInit {
 
-  carteira$: Observable<Carteira[]>;
-
-  displayedColumns = ['nome', 'quantidade', 'actions'];
-
-
-
+  empresa$: Observable<Empresa[]>;
   constructor(
-    private carteiraService: CarteiraService,
-    public dialog: MatDialog,
+    private empresaService: EmpresaService,
     private router: Router,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar
-    ) {
-    this.carteira$ = this.carteiraService.list()
-    .pipe(
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
+  ) { 
+    this.empresa$ = this.empresaService.getListEmpresa()
+    .pipe(      
       catchError( error => {
           this.onError('Erro ao carregar a carteira');
           return of([])
         })
     );
-  }
-
-  onError(errorMsg: string){
-    this.dialog.open(ErrorDialogComponent,{
-      data: errorMsg
-    });
   }
 
   ngOnInit(): void {
@@ -50,13 +38,13 @@ export class CarteiraComponent implements OnInit {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 
-  onEdit(carteira: Carteira){
-    this.router.navigate(['edit', carteira.id], {relativeTo: this.route});
+  onEdit(empresa: Empresa){
+    this.router.navigate(['edit', empresa.id], {relativeTo: this.route});
   }
 
-  onDelete(carteira: Carteira){
-    this.carteiraService.delete(carteira).pipe(      
-      tap(carteira => {
+  onDelete(empresa: Empresa){
+    this.empresaService.delete(empresa).pipe(      
+      tap(empresa => {
         this.refreshPage();
         this.messageUser("Ação excluída com sucesso!");
       }),
@@ -73,7 +61,7 @@ export class CarteiraComponent implements OnInit {
   }
 
   refreshPage() {
-    this.carteira$ = this.carteiraService.list()
+    this.empresa$ = this.empresaService.getListEmpresa()
     .pipe(
       catchError( error => {
           this.onError('Erro ao carregar a carteira');
@@ -81,6 +69,11 @@ export class CarteiraComponent implements OnInit {
         })
     );
   }
-}
 
- 
+  onError(errorMsg: string){
+    this.dialog.open(ErrorDialogComponent,{
+      data: errorMsg
+    });
+  }
+
+}

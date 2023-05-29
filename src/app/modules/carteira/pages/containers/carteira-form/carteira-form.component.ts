@@ -1,4 +1,3 @@
-
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, catchError, isEmpty, of, tap, throwError  } from 'rxjs';
@@ -14,8 +13,8 @@ import { Carteira } from '../../../model/carteira';
 
 @Component({
   selector: 'app-carteira-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss'],
+  templateUrl: './carteira-form.component.html',
+  styleUrls: ['./carteira-form.component.scss']
 })
 export class CarteiraFormComponent implements OnInit {
   selectedValue: string = '';
@@ -33,10 +32,14 @@ export class CarteiraFormComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     this.form = this.formBuilder.group({
-      id: '',
-      acaoId: '',
-      quantidade: ''
+      id: [0],
+      acao: this.formBuilder.group({
+        id: [0],
+        nome: ['']
+      }),
+      quantidade: ['']
     });
+
   }
 
   ngOnInit() {
@@ -53,10 +56,15 @@ export class CarteiraFormComponent implements OnInit {
     ).subscribe();
 
     if(carteira.id != ''){
+
       console.log(carteira);
+
       this.form.setValue({
         id: carteira.id,
-        acaoId: carteira.acao.id,
+        acao: {
+          id: carteira.acao.id,
+          nome: carteira.acao.nome
+        },
         quantidade: carteira.quantidade
       });
     }

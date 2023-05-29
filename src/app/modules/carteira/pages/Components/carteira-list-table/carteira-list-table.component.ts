@@ -13,6 +13,7 @@ export class CarteiraListTableComponent implements OnInit {
   @Input() carteira: Carteira[] = [];
   @Output() add = new EventEmitter(false);
   @Output() edit = new EventEmitter(false);
+  @Output() delete = new EventEmitter(false);
 
   constructor(
     private router: Router,
@@ -29,5 +30,9 @@ export class CarteiraListTableComponent implements OnInit {
 
   onEdit(carteira: Carteira){
     this.edit.emit(carteira);
+  }
+
+  onDelete(carteira: Carteira){
+    this.delete.emit(carteira);
   }
 }

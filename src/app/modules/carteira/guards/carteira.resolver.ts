@@ -7,6 +7,7 @@ import {
 import { Observable, of } from 'rxjs';
 import { CarteiraService } from '../service/carteira/carteira.service';
 import { Carteira } from '../model/carteira';
+import { Acao } from '../model/acao';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +15,15 @@ import { Carteira } from '../model/carteira';
 export class CarteiraResolver implements Resolve<Carteira> {
 
   constructor(private service: CarteiraService) { }
-
+  
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Carteira> {
     if(route.params && route.params['id']){
       return this.service.findCarteiraById(route.params['id']);
     }
+    
+    const acaoVazia: Acao = { id: 0, nome: '' };
+    const carteiraVazia: Carteira = { id: 0, acao: acaoVazia, quantidade: 0};
 
-    const carteiraVazia: Carteira = { id: '', nome: '', quantidade: '' };
-
-    return of({id: '', nome: '', quantidade: '' });
+    return of(carteiraVazia);
   }
 }

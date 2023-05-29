@@ -8,7 +8,7 @@ import { Observable, tap } from 'rxjs';
 })
 export class AcaoService {
 
-  private readonly API = 'api/acoes';
+  private readonly API = 'api/acao';
 
   constructor(private httpClient: HttpClient) { }
 

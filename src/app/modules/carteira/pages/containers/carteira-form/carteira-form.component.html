@@ -1,0 +1,31 @@
+<mat-card>
+    <form [formGroup]="form">
+  
+  
+        <mat-toolbar color="primary">Adicionar na carteira</mat-toolbar>
+  
+  
+      <div class="carteira-form-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Selecione</mat-label>
+          <div formGroupName="acao">
+            <mat-select formControlName="id">
+              <mat-option *ngFor="let acao of acoes" [value]="acao.id">
+                {{ acao.nome }}
+              </mat-option>
+            </mat-select>
+          </div>
+        </mat-form-field>
+  
+        <mat-form-field  appearance="fill">
+          <mat-label>Entre com a quantidade</mat-label>
+          <input matInput #input maxlength="10" placeholder="Ex. 100" formControlName="quantidade">
+        </mat-form-field>
+  
+      </div>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
+        <button mat-raised-button (click)="onCancel()">Voltar</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
