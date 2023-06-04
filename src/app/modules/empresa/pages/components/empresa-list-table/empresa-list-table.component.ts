@@ -9,7 +9,7 @@ import { Empresa } from '../../../model/empresa';
 })
 export class EmpresaListTableComponent implements OnInit {
 
-  displayedColumns = ['nome', 'setor', 'segmento', 'cnpj', 'actions'];
+  displayedColumns = ['nome', 'setor', 'cnpj', 'actions'];
   @Input() empresa: Empresa[] = [];
   @Output() add = new EventEmitter(false);
   @Output() edit = new EventEmitter(false);
