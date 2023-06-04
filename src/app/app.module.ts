@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CarteiraModule } from './modules/carteira/carteira.module';
-import { EmpresaModule } from './modules/empresa/empresa.module';
+import { CarteiraModule } from './pages/carteira/carteira.module';
+import { EmpresaModule } from './pages/empresa/empresa.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
