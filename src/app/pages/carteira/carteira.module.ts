@@ -1,7 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
-
+import { CommonModule } from '@angular/common';
 import { CarteiraRoutingModule } from './carteira-routing.module';
 import { CarteiraComponent } from '../../pages/carteira/containers/carteira-listagem/listagem.component';
 import { AppMaterialModule } from '../../shared/app-material/app-material.module';

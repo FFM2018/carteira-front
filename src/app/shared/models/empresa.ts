@@ -1,6 +1,8 @@
+import { Setor } from "./setor";
+
 export interface Empresa {
     id: number,
     nome: string,
-    setor: String,    	
+    setor: Setor,    	
     cnpj: string
 }

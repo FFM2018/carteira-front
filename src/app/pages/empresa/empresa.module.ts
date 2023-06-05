@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { EmpresaRoutingModule } from './empresa-routing.module';
 import { EmpresaListTableComponent } from '../empresa/components/empresa-list-table/empresa-list-table.component';
 import { EmpresaListagemComponent } from '../empresa/containers/empresa-listagem/empresa-listagem.component';

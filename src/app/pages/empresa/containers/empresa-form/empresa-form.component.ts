@@ -26,23 +26,25 @@ export class EmpresaFormComponent implements OnInit {
   ) {
     this.form = this.formBuilder.group({
       nome: '',
-      setor: '',
-      subsetor: '',
+      setor: this.formBuilder.group({
+        id: [0],
+        nome: ['']
+      }),
       cnpj: ''
     });
    }
 
   ngOnInit() {
 
-    // this.empresaService.getListSetor().pipe(
-    //   tap((response) => {
-    //     this.setores = response;
-    //   }),
-    //   catchError(error => {
-    //     this.messageUser(error);
-    //     return of();
-    //   })
-    // ).subscribe();
+    this.empresaService.getListSetor().pipe(
+      tap((response) => {
+        this.setores = response;
+      }),
+      catchError(error => {
+        this.messageUser(error);
+        return of();
+      })
+    ).subscribe();
     
     
   }
@@ -59,15 +61,15 @@ export class EmpresaFormComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.carteiraService.save(this.form.value).pipe(
-    //   tap(acoes => {
-    //     this.messageUser("Ação adicionada na carteira com sucesso!");
-    //   }),
-    //   catchError(error => {
-    //     this.messageUser(error.error.userMessage);
-    //     return of();
-    //   })
-    // ).subscribe();
+    this.empresaService.save(this.form.value).pipe(
+      tap(acoes => {
+        this.messageUser("Ação adicionada na carteira com sucesso!");
+      }),
+      catchError(error => {
+        this.messageUser(error.error.userMessage);
+        return of();
+      })
+    ).subscribe();
   }
 
 }
