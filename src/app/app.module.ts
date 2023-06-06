@@ -7,6 +7,7 @@ import { CarteiraModule } from './pages/carteira/carteira.module';
 import { EmpresaModule } from './pages/empresa/empresa.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { GeralModule } from './pages/geral/geral.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AppComponent } from './app.component';
     MatToolbarModule,
     HttpClientModule,
     CarteiraModule,
-    EmpresaModule
+    EmpresaModule,
+    GeralModule
   ],
   providers: [],
   bootstrap: [AppComponent]

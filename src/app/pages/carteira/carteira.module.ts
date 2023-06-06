@@ -14,20 +14,18 @@ import { CarteiraFormComponent } from '../carteira/containers/carteira-form/cart
     CarteiraComponent,
     CarteiraFormComponent,
     CarteiraListTableComponent,
-    CarteiraFormComponent,
-    TopComponent
+    CarteiraFormComponent
 
 
   ],
   imports: [
     CommonModule,
     CarteiraRoutingModule,
-    AppMaterialModule,
     SharedModule,
     ReactiveFormsModule
   ],
   exports: [
-    TopComponent
+    
   ]
 })
 export class CarteiraModule { }
