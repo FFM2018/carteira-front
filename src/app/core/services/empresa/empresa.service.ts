@@ -24,13 +24,14 @@ export class EmpresaService {
   }
 
   getListSetor(){    
-    return this.httpClient.get<Setor[]>(`${this.API}/setores`)
-    .pipe(
-      tap(setores => {
-        console.log("setores:");
-        console.log(setores);
-      })
-    )
+    return this.httpClient.get<Setor[]>(`${this.API}/setores`);
+    // .pipe(
+    //   tap(setores => {
+    //     console.log("setores:");
+    //     console.log(setores);
+    //     console.log(222);
+    //   })
+    // )
   }
 
   save(record: Empresa){

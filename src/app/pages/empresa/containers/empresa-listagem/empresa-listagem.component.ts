@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpresaService } from '../../../../core/services/empresa/empresa.service';
 import { Empresa } from '../../../../shared/models/empresa';
-import { Observable, catchError, of, tap } from 'rxjs';
+import { Observable, catchError, of, tap, map } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CnpjFormatPipe } from 'src/app/core/pipe/cnpj-format.pipe';
 
 @Component({
   selector: 'app-empresa-listagem',
@@ -15,6 +16,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class EmpresaListagemComponent implements OnInit {
 
   empresa$: Observable<Empresa[]>;
+  cnpjFormatPipe: CnpjFormatPipe = new CnpjFormatPipe();
+
   constructor(
     private empresaService: EmpresaService,
     private router: Router,
@@ -22,8 +25,12 @@ export class EmpresaListagemComponent implements OnInit {
     private snackBar: MatSnackBar,
     private dialog: MatDialog
   ) { 
-    this.empresa$ = this.empresaService.getListEmpresa()
-    .pipe(      
+    
+    this.empresa$ = this.empresaService.getListEmpresa().pipe(
+      map(empresas => {
+        const empresasFormatadas = this.cnpjFormatPipe.transform(empresas);
+        return empresasFormatadas;
+      }),         
       catchError( error => {
           this.onError('Erro ao carregar a carteira');
           return of([])

@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GeralModule } from './pages/geral/geral.module';
 
+
 @NgModule({
   declarations: [
     AppComponent

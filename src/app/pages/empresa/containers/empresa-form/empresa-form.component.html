@@ -4,7 +4,7 @@
     <div class="carteira-form-container">
       <mat-form-field appearance="fill">
         <mat-label>Nome da Empresa</mat-label>
-        <input matInput #input maxlength="10" placeholder="Ex. Banco do Brasil" formControlName="nome">
+        <input matInput #input maxlength="30" placeholder="Ex. Banco do Brasil" formControlName="nome">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Selecione</mat-label>
@@ -19,13 +19,13 @@
 
       <mat-form-field appearance="fill">
         <mat-label>CNPJ</mat-label>
-        <input matInput #input maxlength="17" placeholder="Ex. 00000000000000" formControlName="cnpj">
+        <input matInput #input maxlength="18" placeholder="Ex. 00000000000000" formControlName="cnpj">
       </mat-form-field>
 
     </div>
     <mat-card-actions>
       <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
-      <button mat-raised-button (click)="onCancel()">Cancelar</button>
+      <button mat-raised-button (click)="onVoltar()">Voltar</button>
     </mat-card-actions>
   </form>
 </mat-card>

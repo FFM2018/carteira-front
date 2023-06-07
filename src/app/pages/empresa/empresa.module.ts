@@ -4,7 +4,6 @@ import { EmpresaRoutingModule } from './empresa-routing.module';
 import { EmpresaListTableComponent } from '../empresa/components/empresa-list-table/empresa-list-table.component';
 import { EmpresaListagemComponent } from '../empresa/containers/empresa-listagem/empresa-listagem.component';
 import { SharedModule } from '../../shared/shared.module';
-import { AppMaterialModule } from '../../shared/app-material/app-material.module';
 import { EmpresaFormComponent } from '../empresa/containers/empresa-form/empresa-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -12,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     EmpresaListTableComponent,
     EmpresaListagemComponent,
-    EmpresaFormComponent     
+    EmpresaFormComponent         
   ],
   imports: [
     CommonModule,
