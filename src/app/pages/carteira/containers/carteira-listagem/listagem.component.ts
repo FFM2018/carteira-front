@@ -55,16 +55,21 @@ export class CarteiraComponent implements OnInit {
   }
 
   onDelete(carteira: Carteira){
-    this.carteiraService.delete(carteira).pipe(      
-      tap(carteira => {
-        this.refreshPage();
-        this.messageUser("Ação excluída com sucesso!");
-      }),
-      catchError(error => {
-        this.messageUser(error.error.userMessage);
-        return of();
-      })
-    ).subscribe();
+
+    const confirmar = window.confirm("Deseja excluir a ação?");
+
+    if(confirmar){
+      this.carteiraService.delete(carteira).pipe(      
+        tap(carteira => {
+          this.refreshPage();
+          this.messageUser("Ação excluída com sucesso!");
+        }),
+        catchError(error => {
+          this.messageUser(error.error.userMessage);
+          return of();
+        })
+      ).subscribe();
+    }
     
   }
 

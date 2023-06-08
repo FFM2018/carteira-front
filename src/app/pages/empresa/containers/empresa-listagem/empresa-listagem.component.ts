@@ -50,16 +50,20 @@ export class EmpresaListagemComponent implements OnInit {
   }
 
   onDelete(empresa: Empresa){
-    this.empresaService.delete(empresa).pipe(      
-      tap(empresa => {
-        this.refreshPage();
-        this.messageUser("Ação excluída com sucesso!");
-      }),
-      catchError(error => {
-        this.messageUser(error.error.userMessage);
-        return of();
-      })
-    ).subscribe();
+    const confirmar = window.confirm("Deseja excluir a empresa?");
+
+    if(confirmar){
+      this.empresaService.delete(empresa).pipe(      
+        tap(empresa => {
+          this.refreshPage();
+          this.messageUser("Empresa excluída com sucesso!");
+        }),
+        catchError(error => {
+          this.messageUser(error.error.userMessage);
+          return of();
+        })
+      ).subscribe();
+    }
     
   }
 
