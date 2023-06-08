@@ -9,6 +9,7 @@ import { catchError, of, tap } from 'rxjs';
 import { RemoveSpecialCharactersPipe } from 'src/app/core/pipe/remove-special-characters.pipe';
 import { CnpjFormatPipe } from 'src/app/core/pipe/cnpj-format.pipe';
 import { Empresa } from 'src/app/shared/models/empresa';
+import { CnpjMaskDirective } from './../../../../../scripts/cnpj-mask';
 
 @Component({
   selector: 'app-empresa-form',
@@ -22,6 +23,8 @@ export class EmpresaFormComponent implements OnInit {
   removeSpecialCharactersPipe: RemoveSpecialCharactersPipe = new RemoveSpecialCharactersPipe();
   cnpjFormatPipe: CnpjFormatPipe = new CnpjFormatPipe();
   empresa!: Empresa;
+  cnpj: any;
+  
   constructor(
     private formBuilder: NonNullableFormBuilder,
     private route: ActivatedRoute,
@@ -38,6 +41,10 @@ export class EmpresaFormComponent implements OnInit {
       }),
       cnpj: ''
     });
+  }
+
+  formatCnpj() {
+    this.cnpj = new CnpjMaskDirective(this.cnpj);
   }
 
   ngOnInit() {
@@ -101,5 +108,4 @@ export class EmpresaFormComponent implements OnInit {
     ).subscribe();
 
   }
-
 }

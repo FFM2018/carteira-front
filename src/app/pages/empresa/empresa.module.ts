@@ -6,12 +6,14 @@ import { EmpresaListagemComponent } from '../empresa/containers/empresa-listagem
 import { SharedModule } from '../../shared/shared.module';
 import { EmpresaFormComponent } from '../empresa/containers/empresa-form/empresa-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CnpjMaskDirective } from 'src/scripts/cnpj-mask';
 
 @NgModule({
   declarations: [
     EmpresaListTableComponent,
     EmpresaListagemComponent,
-    EmpresaFormComponent         
+    EmpresaFormComponent,
+    CnpjMaskDirective          
   ],
   imports: [
     CommonModule,
